@@ -1,8 +1,8 @@
 node('master')
 {
-    stage('ContinuousDownload') 
+    stage('ContinuousDownload')
     {
-       git 'https://github.com/intelliqittrainings/maven.git'
+       git 'https://github.com/gitbash4prem/maven.git'
     }
     stage('ContinuousBuild')
     {
@@ -10,7 +10,7 @@ node('master')
     }
     stage('ContinuousDeployment')
     {
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.18.176:/var/lib/tomcat8/webapps/testapp.war'
+        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/scmPipeline/webapp/target/webapp.war ubuntu@172.31.42.164:/var/lib/tomcat8/webapps/testapp2.war'
     }
     stage('ContinuousTesting')
     {
@@ -19,10 +19,6 @@ node('master')
     }
     stage('ContinuousDelivery')
     {
-         sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.21.163:/var/lib/tomcat8/webapps/prodapp.war'
+         sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.34.107:/var/lib/tomcat8/webapps/prodapp.war'
     }
-    
-    
-    
 }
-
